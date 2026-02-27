@@ -22,7 +22,7 @@ services:
       - ${FRONTEND_PORT}:3000
   pg:
     container_name: state-search-db
-    image: postgres
+    image: postgres:17-alpine
     environment:
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}

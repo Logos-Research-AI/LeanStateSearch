@@ -24,22 +24,7 @@ This repository contains the frontend and backend code for the application. You 
 
 ## ⚒️ Installation
 
-This project uses [Nix](https://nixos.org/) for development dependency management. We recommend installing `nix` using the script provided by [zero-to-nix](https://zero-to-nix.com/start/install/).
-
-After installing `nix`, run the following command to enter development environment.
-
-```shell
-nix develop
-```
-
-You should first download our model from [huggingface](https://huggingface.co/ruc-ai4math/LeanStateSearch2025.3). Run the following command:
-
-```shell
-git lfs install
-git clone https://huggingface.co/ruc-ai4math/LeanStateSearch2025.3
-```
-
-You also need to fill in the necessary environment variables in the `.env` file. First, copy the `.env.example` to `.env`:
+You need to fill in the necessary environment variables in the `.env` file. First, copy the `.env.example` to `.env`:
 
 ```shell
 cp .env.example .env
@@ -48,7 +33,6 @@ cp .env.example .env
 Here is an example project structure:
 ```
 LeanStateSearch
-├── LeanStateSearch2025.3
 ├── data
 ├── protos
 ├── scripts
@@ -63,8 +47,6 @@ LeanStateSearch
 ├── .env
 └── README.md
 ```
-
-The `MODEL_NAME_OR_PATH` environment variable should be the absolute path to the model.
 
 We recommend using docker for deployment. Run the following command to build the images of frontend and backend:
 

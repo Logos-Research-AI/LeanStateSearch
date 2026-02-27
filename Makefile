@@ -26,7 +26,7 @@ build-images:
 init-service:
 	(docker compose up --wait)
 	(sleep 5 && ./scripts/init-pg.sh)
-	(cd ${BACKEND} && poetry install && poetry run prisma db push)
+	(cd ${BACKEND} && uv run prisma db push)
 
 proto:
 	(cd protos && buf generate)
