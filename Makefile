@@ -26,7 +26,6 @@ build-images:
 init-service:
 	(docker compose up --wait)
 	(sleep 5 && ./scripts/init-pg.sh)
-	(cd ${BACKEND} && uv run prisma db push)
 
 proto:
 	(cd protos && buf generate)
