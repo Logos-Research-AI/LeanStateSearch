@@ -33,18 +33,14 @@ cp .env.example .env
 Here is an example project structure:
 ```
 LeanStateSearch
+├── .env
+├── compose.yaml
 ├── data
 ├── protos
 ├── scripts
 ├── lean-state-search
 ├── state-search-be
 ├── Makefile
-├── lib.nix
-├── flake.lock
-├── compose.yaml
-├── flake.nix
-├── shell.nix
-├── .env
 └── README.md
 ```
 
@@ -60,18 +56,20 @@ Then run the command to start the service:
 make init-service
 ```
 
+### Everything after this doesn't work
+
 After starting the basic services, you need to prepare the data yourself. We provide premises extracted from `v4.16.0` of Mathlib as an example. You can use existing tools like [ntp-toolkit](https://github.com/cmu-l3/ntp-toolkit) to extract data. Run the following command to upload data to the postgresql database.
 
 ```shell
 cd state-search-be
-poetry run python scripts/upload_theorem.py --data-path ../data/premise4.16.0.jsonl --rev v4.16.0
+uv run scripts/upload_theorem.py --data-path ../data/premise4.16.0.jsonl --rev v4.16.0
 ```
 
 Then run the following command to create vector store. It will take some time depending on the hardware of your computer.
 
 ```shell
 # In state-search-be/
-poetry run python scripts/create_vector_store.py --rev v4.16.0
+uv run scripts/create_vector_store.py --rev v4.16.0
 ```
 
 Now your application can work properly in `http://localhost:${FRONTEND_PORT}`.
